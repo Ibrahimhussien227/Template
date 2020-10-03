@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher1_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".SecondActivity">
+            <intent-filter>
+                <action android:name="com.example.template.secondactivity" />
+                <category android:name="android.intent.catego   ry.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Profile" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".SignUp" />
         <activity android:name=".MainActivity">

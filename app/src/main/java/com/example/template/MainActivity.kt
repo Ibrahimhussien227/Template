@@ -16,9 +16,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        btn_Send.setOnClickListener {
 
-        btn_registration.setOnClickListener {
-            val intent = Intent(this, SignUp::class.java)
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.setType("text/plain")
+            val editText = findViewById<EditText>(R.id.et_message)
+            val message = et_message.text.toString()
+
+            intent.putExtra(Intent.EXTRA_TEXT,message)
+
+            if (intent.resolveActivity(packageManager) != null)
+
+                startActivity(intent)
+
+        }
+        btn_secondAcitvity.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
     }
