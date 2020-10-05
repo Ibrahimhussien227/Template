@@ -17,18 +17,18 @@ class Profile : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("Admin", Context.MODE_PRIVATE)
         val userName = sharedPreferences.getString("USERNAME", "")
         tvUserName.text = userName
-        et_profileUserName.setText(userName).toString()
+        et_profileUserName.setText(userName)
         val email = sharedPreferences.getString("EMAIL", "")
-        et_profileEmail.setText(email).toString()
+        et_profileEmail.setText(email)
         val fullName = sharedPreferences.getString("FULL NAME", "")
-        et_profileFullName.setText(fullName).toString()
+        et_profileFullName.setText(fullName)
         tvName.text = fullName
         val city = sharedPreferences.getString("CITY", "")
-        et_profileCity.setText(city).toString()
+        et_profileCity.setText(city)
         val phone = sharedPreferences.getString("PHONE", "")
-        et_profilePhone.setText(phone).toString()
+        et_profilePhone.setText(phone)
         val password = sharedPreferences.getString("PASSWORD", "")
-        et_profilePassword.setText(password).toString()
+        et_profilePassword.setText(password)
 
 
         Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show()

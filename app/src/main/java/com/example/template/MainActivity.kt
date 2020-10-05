@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         btn_secondAcitvity.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, Profile::class.java)
             startActivity(intent)
         }
     }
