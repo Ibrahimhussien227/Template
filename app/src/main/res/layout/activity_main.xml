@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentActivity"
+    android:orientation="horizontal"
+    android:baselineAligned="false">
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_bottomNavigation"/>
 
-    <EditText
-        android:id="@+id/et_message"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btn_bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Write your message..."/>
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation"
+        android:background="?android:attr/windowBackground"/>
 
-    <Button
-        android:id="@+id/btn_Send"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Send Email"
-        android:background="#000"
-        android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_secondAcitvity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Second Activity"
-        android:background="#000"
-        android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</LinearLayout>
+</RelativeLayout>
