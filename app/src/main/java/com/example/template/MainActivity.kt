@@ -4,74 +4,32 @@ package com.example.template
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var homeFragment: HomeFragment
-    lateinit var favoriteFragment: FavoriteFragment
-    lateinit var profileFragment: ProfileFragment
-    lateinit var searchFragment: SearchFragment
-    lateinit var addPhotoFragment: AddPhotoFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.btn_bottomNavigation)
-        bottomNavigationView.setOnNavigationItemReselectedListener { item ->
 
-            homeFragment = HomeFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.frame_layout, homeFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+        val item = ArrayList<City>()
 
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    homeFragment = HomeFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.frame_layout, homeFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-                R.id.navigation_profile -> {
-                    profileFragment = ProfileFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.frame_layout, profileFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-                R.id.navigation_search -> {
-                    searchFragment = SearchFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.frame_layout, searchFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-                R.id.navigation_favorite -> {
-                    favoriteFragment = FavoriteFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.frame_layout, favoriteFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-                R.id.navigation_addPhoto -> {
-                    addPhotoFragment = AddPhotoFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.frame_layout, addPhotoFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-            }
-        }
+        item.add(City(R.drawable.russian, "RUSSIAN", "This is Russian Description"))
+        item.add(City(R.drawable.egypt, "EGYPT", "This is Egypt Description"))
+        item.add(City(R.drawable.france, "FRANCE", "This is France Description"))
+        item.add(City(R.drawable.germany, "GERMANY", "This is German Description"))
+
+        val cityAdapter = CityAdapter(item, this)
+
+        rv_1.layoutManager = LinearLayoutManager(this)
+        rv_1.adapter = cityAdapter
+        rv_1.setHasFixedSize(true)
     }
 }
