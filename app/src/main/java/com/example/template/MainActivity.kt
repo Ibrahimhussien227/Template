@@ -1,12 +1,13 @@
 package com.example.template
 
 
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import java.text.FieldPosition
-
+import java.time.Duration
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,46 +15,25 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setViewPagerAdapter()
-        setBottomNavigation()
-        setViewPagerListener()
-    }
 
-    private fun setBottomNavigation() {
-        btn_bottomNavigation.setOnNavigationItemReselectedListener {
-            vp_1.currentItem = when(it.itemId) {
-                R.id.navigation_home -> 0
-                R.id.navigation_search -> 1
-                R.id.navigation_profile -> 2
-                else -> 0
-            }
-            return@setOnNavigationItemReselectedListener
-        }
-    }
+        val songList: List<SongModel> = arrayListOf(
+            SongModel(R.drawable.lovely, R.raw.maribou, "Maribou", 3, "Billie Eilish"),
+            SongModel(R.drawable.cover_2, R.raw.rise, "Rise", 2, "Andra Day"),
+            SongModel(R.drawable.cover_3, R.raw.i_am_king,"I Am King", 4, "James Meyers"),
+            SongModel(R.drawable.cover_4, R.raw.davidguetta,"play",2, "David Guetta"),
+            SongModel(R.drawable.cover_5, R.raw.in_the_end, "In The End", 3, "Linkin Park"),
+            SongModel(R.drawable.cover_6, R.raw.hislerim, "Hislerim", 2, "Serhat Dermus"),
+            SongModel(R.drawable.cover_7, R.raw.the_irrepressibles, "In This Shirt", 4, "Irrepressibles")
 
-    private fun setViewPagerAdapter() {
-        vp_1.adapter = MainPageAdapter(supportFragmentManager)
-    }
-    private fun setViewPagerListener() {
-        vp_1.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-            }
+        )
 
-            override fun onPageSelected(position: Int) {
-                btn_bottomNavigation.selectedItemId = when(position) {
-                    0 -> R.id.navigation_home
-                    1 -> R.id.navigation_search
-                    2 -> R.id.navigation_profile
-                    else -> R.id.navigation_home
-                }
-            }
+        val songAdapter = SongListAdapter(songList, this)
 
-            override fun onPageScrollStateChanged(state: Int) {
-            }
-        })
+
+
+        rv_songs.layoutManager = LinearLayoutManager(this)
+        rv_songs.adapter = songAdapter
+        rv_songs.setHasFixedSize(true)
+
     }
 }

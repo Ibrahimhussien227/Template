@@ -4,15 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
- class CityAdapter(
-     val city: ArrayList<City>,
-     val context: Context
+class CityAdapter(
+    val city: ArrayList<City>,
+    val context: Context
 ) : RecyclerView.Adapter<CityHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityHolder {
-        val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_city, parent, false)
+        val itemHolder =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_city, parent, false)
         return CityHolder(itemHolder)
     }
 
@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
             /*if (position == 0) {
                 Toast.makeText(context, "Russian",Toast.LENGTH_LONG).show()
             }*/
-            var city= city.get(position)
+            val city = city.get(position)
 
             val text1: String = city.text
             val iImageView: Int = city.imageResource
