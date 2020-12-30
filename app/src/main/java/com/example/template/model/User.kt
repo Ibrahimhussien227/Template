@@ -1,9 +1,12 @@
-package com.example.template.data
+package com.example.template.model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "user_table")
 data class User(
 
@@ -18,4 +21,4 @@ data class User(
 
     @ColumnInfo
     val age: Int
-)
+): Parcelable

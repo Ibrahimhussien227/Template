@@ -1,6 +1,7 @@
 package com.example.template.data
 
 import androidx.lifecycle.LiveData
+import com.example.template.model.User
 
 class UserRepository(private val userDao: UserDao) {
 
@@ -13,7 +14,7 @@ class UserRepository(private val userDao: UserDao) {
         userDao.update(user)
     }
     suspend fun delete(user: User){
-        userDao.deleteSubscriber(user)
+        userDao.deleteUser(user)
     }
     suspend fun deleteAll(){
         userDao.deleteAll()
